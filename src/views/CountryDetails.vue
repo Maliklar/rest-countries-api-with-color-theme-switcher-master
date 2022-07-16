@@ -1,9 +1,10 @@
 <template>
   <div class="country-details-view" v-if="$store.state.filter">
-    <div class="back-bar">
-      <button><i class="fa-solid fa-arrow-left"></i> Back</button>
+    <div class="back-bar" @click="back">
+      <button @click="$router.go(-1)">
+        <i class="fa-solid fa-arrow-left"></i> Back
+      </button>
     </div>
-
     <CountryDetailsBox :data="getCountry($route.params.id)" />
   </div>
 </template>
@@ -12,6 +13,7 @@
 import CountryDetailsBox from "../components/CountryDetailsBox.vue";
 export default {
   components: { CountryDetailsBox },
+  name: "CountryDetails",
   methods: {
     getCountry(code) {
       return this.$store.state.data.find((val) => {

@@ -1,6 +1,11 @@
 <template>
   <div class="card">
-    <img class="flag-img" :src="data.flag" :alt="data.name" />
+    <img
+      class="flag-img"
+      @click="goTo(data.alpha3Code)"
+      :src="data.flag"
+      :alt="data.name"
+    />
     <div class="country-details">
       <h1>{{ data.name }}</h1>
       <p><strong>Population:</strong> {{ data.population }}</p>
@@ -14,6 +19,13 @@
 export default {
   props: {
     data: Object,
+  },
+  methods: {
+    goTo(code) {
+      this.$router.push({
+        path: "/country/" + code,
+      });
+    },
   },
 };
 </script>
