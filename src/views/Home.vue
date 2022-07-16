@@ -38,4 +38,10 @@ export default {
   grid-auto-rows: 338px;
   gap: 76px;
 }
+
+@media screen and (max-width: 1180px) {
+  .home-view {
+    padding: 0 10.5%;
+  }
+}
 </style>

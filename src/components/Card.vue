@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <img class="flag-img" :src="data.flag" alt="" />
+    <img class="flag-img" :src="data.flag" :alt="data.name" />
     <div class="country-details">
       <h1>{{ data.name }}</h1>
       <p><strong>Population:</strong> {{ data.population }}</p>

@@ -83,4 +83,23 @@ export default {
   width: 15.5%;
   padding: 0 26px;
 }
+
+@media screen and (max-width: 1180px) {
+  .filter-bar-view {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    margin: 50px 0;
+    height: 126px;
+  }
+  .filter-dropdown {
+    border: none;
+    width: 50%;
+    padding: 0 26px;
+  }
+  .search-container {
+    width: 100%;
+  }
+}
 </style>

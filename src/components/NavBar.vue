@@ -40,4 +40,16 @@ export default {};
   border: none;
   cursor: pointer;
 }
+
+@media screen and (max-width: 1180px) {
+  .nav-view > h1 {
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+
+  .nav-view > button {
+    font-size: 0.9rem;
+    font-weight: 800;
+  }
+}
 </style>

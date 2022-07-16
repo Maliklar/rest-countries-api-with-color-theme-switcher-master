@@ -1,10 +1,10 @@
 <template>
   <div class="country-details-view" v-if="$store.state.filter">
-    <div class="filter-bar-view">
+    <div class="back-bar">
       <button><i class="fa-solid fa-arrow-left"></i> Back</button>
     </div>
 
-    <CountryDetailsBox :data="$store.state.filter[+$route.params.id]" />
+    <CountryDetailsBox :data="getCountry($route.params.id)" />
   </div>
 </template>
 
@@ -12,6 +12,15 @@
 import CountryDetailsBox from "../components/CountryDetailsBox.vue";
 export default {
   components: { CountryDetailsBox },
+  methods: {
+    getCountry(code) {
+      return this.$store.state.data.find((val) => {
+        if (val.alpha3Code == code) {
+          return val;
+        }
+      });
+    },
+  },
 };
 </script>
 
@@ -19,14 +28,14 @@ export default {
 .country-details-view {
   padding: 0 5.6%;
 }
-.filter-bar-view {
+.back-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 74px 0;
   height: 58px;
 }
-.filter-bar-view > button {
+.back-bar > button {
   background-color: white;
   border: none;
   box-shadow: 0 0 8px lightslategray;

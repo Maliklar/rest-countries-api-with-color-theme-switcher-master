@@ -27,8 +27,12 @@
       </div>
       <div class="bottom">
         <strong>Border Countries</strong>
-        <button v-for="country in data.borders" :key="country">
-          {{ country }}
+        <button
+          v-for="country in data.borders"
+          :key="country"
+          @click="goTo(country)"
+        >
+          {{ getCountry(country).name }}
         </button>
       </div>
     </div>
@@ -40,8 +44,17 @@ export default {
   props: {
     data: Object,
   },
-  created() {
-    console.log(this.data);
+  methods: {
+    getCountry(code) {
+      return this.$store.state.data.find((val) => {
+        return val.alpha3Code == code;
+      });
+    },
+    goTo(code) {
+      this.$router.push({
+        path: "/country/" + code,
+      });
+    },
   },
 };
 </script>
@@ -53,14 +66,12 @@ export default {
 }
 
 .flag-container {
-  width: 560px;
-  height: 400px;
+  min-width: 560px;
+  max-width: 560px;
   overflow: hidden;
 }
 .flag-container > img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 .country-details-box {
   height: 220px;
@@ -73,7 +84,7 @@ export default {
 .bottom {
   display: flex;
   align-items: center;
-
+  flex-wrap: wrap;
   width: 100%;
   gap: 20px;
 }
@@ -84,5 +95,28 @@ export default {
   box-shadow: 0 0 5px lightslategray;
   padding: 0.5em 2em;
   border-radius: 5px;
+}
+
+@media screen and (max-width: 1180px) {
+  .details-box-view {
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+  }
+
+  .flag-container {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+  }
+
+  .country-details-box {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 34px;
+    flex-wrap: wrap;
+  }
 }
 </style>
