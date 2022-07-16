@@ -13,6 +13,8 @@
 }
 
 body {
+    background-color: var(--VeryLightGrayLightModeBackground);
+    min-height: 100vh;
     padding: 0px;
     margin: 0px;
 }
