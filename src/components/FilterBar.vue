@@ -8,25 +8,46 @@
         class="search-input"
       />
     </div>
-    <select class="filter-dropdown" id="cars" name="cars">
+    <select
+      class="filter-dropdown"
+      v-model="filter"
+      @change="selected"
+      id="cars"
+      name="cars"
+    >
       <option value="">Filter by Region</option>
-      <option value="volvo">Volvo</option>
-      <option value="saab">Saab</option>
-      <option value="fiat">Fiat</option>
-      <option value="audi">Audi</option>
+      <option value="Africa">Africa</option>
+      <option value="Americas">Americas</option>
+      <option value="Asia">Asia</option>
+      <option value="Europe">Europe</option>
+      <option value="Oceania">Oceania</option>
     </select>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      filter: "",
+    };
+  },
+  methods: {
+    selected() {
+      this.$store.state.filter = this.$store.state.data.filter((val) => {
+        if (val.region == this.filter) {
+          return val;
+        }
+      });
+    },
+  },
+};
 </script>
 
 <style>
 .filter-bar-view {
   display: flex;
   justify-content: space-between;
-  padding: 0 5.4%;
   margin: 50px 0;
   height: 56px;
 }

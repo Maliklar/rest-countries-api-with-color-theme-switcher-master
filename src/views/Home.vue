@@ -1,8 +1,12 @@
 <template>
-  <div class="home-view" v-if="data">
+  <div class="home-view" v-if="$store.state.filter">
     <FilterBar />
     <div class="cards-container">
-      <Card v-for="country in data" :key="country" :data="country" />
+      <Card
+        v-for="country in $store.state.filter"
+        :key="country"
+        :data="country"
+      />
     </div>
   </div>
 </template>
@@ -12,20 +16,13 @@ import Card from "../components/Card.vue";
 import FilterBar from "../components/FilterBar.vue";
 
 export default {
-  data() {
-    return {
-      data: null,
-    };
-  },
   async created() {
     fetch("https://restcountries.com/v2/all")
       .then((res) => res.json())
       .then((data) => {
-        this.data = data;
+        this.$store.state.data = data;
+        this.$store.state.filter = data;
       });
-  },
-  async mounted() {
-    console.log(this.data);
   },
   components: { FilterBar, Card },
 };
