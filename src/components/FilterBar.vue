@@ -4,6 +4,8 @@
       <i class="fas fa-search"></i>
       <input
         type="text"
+        v-model="searchText"
+        @input="search"
         placeholder="Search for a country..."
         class="search-input"
       />
@@ -30,12 +32,20 @@ export default {
   data() {
     return {
       filter: "",
+      searchText: "",
     };
   },
   methods: {
     selected() {
       this.$store.state.filter = this.$store.state.data.filter((val) => {
         if (val.region == this.filter) {
+          return val;
+        }
+      });
+    },
+    search() {
+      this.$store.state.filter = this.$store.state.data.filter((val) => {
+        if (val.name.toLowerCase().match(this.searchText.toLowerCase())) {
           return val;
         }
       });
