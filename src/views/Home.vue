@@ -1,8 +1,8 @@
 <template>
-  <div class="home-view">
+  <div class="home-view" v-if="data">
     <FilterBar />
     <div class="cards-container">
-      <Card v-for="country in data" :key="country" />
+      <Card v-for="country in data" :key="country" :data="country" />
     </div>
   </div>
 </template>
