@@ -1,18 +1,20 @@
 <template>
-  <div class="country-details-view" v-if="$store.state.filter">
+  <div class="country-details-view" v-if="$store.state.data">
     <div class="back-bar" @click="back">
-      <button @click="$router.go(-1)">
+      <button @click="$router.go(-1)" :class="{ dark: $store.state.theme }">
         <i class="fa-solid fa-arrow-left"></i> Back
       </button>
     </div>
     <CountryDetailsBox :data="getCountry($route.params.id)" />
   </div>
+  <Loading v-else />
 </template>
 
 <script>
 import CountryDetailsBox from "../components/CountryDetailsBox.vue";
+import Loading from "../components/Loading.vue";
 export default {
-  components: { CountryDetailsBox },
+  components: { CountryDetailsBox, Loading },
   name: "CountryDetails",
   methods: {
     getCountry(code) {

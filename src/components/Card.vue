@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" :class="{ dark: $store.state.theme }">
     <img
       class="flag-img"
       @click="goTo(data.alpha3Code)"
@@ -23,7 +23,9 @@ export default {
   methods: {
     goTo(code) {
       this.$router.push({
-        path: "/country/" + code,
+        path:
+          "/rest-countries-api-with-color-theme-switcher-master/country/" +
+          code,
       });
     },
   },
@@ -41,6 +43,13 @@ p {
   border-radius: 10px;
   overflow: hidden;
 }
+
+.card.dark {
+  background-color: var(--DarkBlueDarkModeElements);
+  box-shadow: 0 0 10px black;
+  color: white;
+}
+
 .flag-img {
   width: 100%;
   height: 47%;

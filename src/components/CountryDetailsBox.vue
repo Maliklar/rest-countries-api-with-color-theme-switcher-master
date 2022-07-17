@@ -1,9 +1,9 @@
 <template>
   <div class="details-box-view">
     <div class="flag-container">
-      <img :src="data.flag" alt="" />
+      <img :src="data.flag" :alt="data.name" />
     </div>
-    <div>
+    <div :class="{ dark: $store.state.theme }">
       <h1>{{ data.name }}</h1>
       <div class="country-details-box">
         <p><strong>Native Name</strong> {{ data.nativeName }}</p>
@@ -28,6 +28,7 @@
       <div class="bottom">
         <strong>Border Countries</strong>
         <button
+          :class="{ dark: $store.state.theme }"
           v-for="country in data.borders"
           :key="country"
           @click="goTo(country)"
@@ -52,7 +53,9 @@ export default {
     },
     goTo(code) {
       this.$router.push({
-        path: "/country/" + code,
+        path:
+          "/rest-countries-api-with-color-theme-switcher-master/country/" +
+          code,
       });
     },
   },
@@ -81,6 +84,10 @@ export default {
   flex-wrap: wrap;
 }
 
+.dark {
+  color: white;
+}
+
 .bottom {
   display: flex;
   align-items: center;
@@ -95,6 +102,12 @@ export default {
   box-shadow: 0 0 5px lightslategray;
   padding: 0.5em 2em;
   border-radius: 5px;
+}
+
+button.dark {
+  background-color: var(--DarkBlueDarkModeElements);
+  box-shadow: 0 0 10px black;
+  color: white;
 }
 
 @media screen and (max-width: 1180px) {

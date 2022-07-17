@@ -3,12 +3,12 @@ import Home from '../views/Home.vue'
 import CountryDetails from "../views/CountryDetails.vue";
 
 const routes = [{
-        path: '/',
+        path: '/rest-countries-api-with-color-theme-switcher-master',
         name: 'Home',
         component: Home
     },
     {
-        path: '/country/:id',
+        path: '/rest-countries-api-with-color-theme-switcher-master/country/:id',
         name: 'CountryDetails',
         component: CountryDetails
     },

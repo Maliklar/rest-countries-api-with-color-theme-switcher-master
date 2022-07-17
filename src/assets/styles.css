@@ -13,7 +13,6 @@
 }
 
 body {
-    background-color: var(--VeryLightGrayLightModeBackground);
     min-height: 100vh;
     padding: 0px;
     margin: 0px;
@@ -23,4 +22,10 @@ button,
 img,
 .card {
     cursor: pointer;
+}
+
+button.dark {
+    background-color: var(--DarkBlueDarkModeElements);
+    box-shadow: 0 0 10px black;
+    color: white;
 }

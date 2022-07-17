@@ -1,6 +1,6 @@
 <template>
   <div class="filter-bar-view">
-    <div class="search-container">
+    <div class="search-container" :class="{ dark: $store.state.theme }">
       <i class="fas fa-search"></i>
       <input
         type="text"
@@ -12,6 +12,7 @@
     </div>
     <select
       class="filter-dropdown"
+      :class="{ dark: $store.state.theme }"
       v-model="filter"
       @change="selected"
       id="cars"
@@ -70,18 +71,41 @@ export default {
   padding: 0 28px;
   border-radius: 10px;
   box-shadow: 0 0 10px lightgray;
-
-  width: 33.2%;
+  width: 460px;
 }
+
+.search-container.dark {
+  background-color: var(--DarkBlueDarkModeElements);
+  box-shadow: 0 0 10px black;
+  color: white;
+}
+.search-container.dark > * {
+  color: white;
+}
+.search-container.dark {
+  color: white;
+}
+.search-container.dark > *::placeholder {
+  color: white;
+}
+
 .search-input {
   background-color: transparent;
+  width: 100%;
+  height: 100%;
   border: none;
 }
 
 .filter-dropdown {
   border: none;
-  width: 15.5%;
+  width: 220px;
+  border-radius: 10px;
   padding: 0 26px;
+}
+.filter-dropdown.dark {
+  background-color: var(--DarkBlueDarkModeElements);
+  box-shadow: 0 0 10px black;
+  color: white;
 }
 
 @media screen and (max-width: 1180px) {

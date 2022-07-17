@@ -1,5 +1,5 @@
 <template>
-  <div class="home-view" v-if="$store.state.filter">
+  <div class="home-view" v-if="$store.state.data">
     <FilterBar />
     <div class="cards-container">
       <Card
@@ -9,22 +9,16 @@
       />
     </div>
   </div>
+  <Loading v-else />
 </template>
 
 <script>
 import Card from "../components/Card.vue";
 import FilterBar from "../components/FilterBar.vue";
+import Loading from "../components/Loading.vue";
 
 export default {
-  async created() {
-    fetch("https://restcountries.com/v2/all")
-      .then((res) => res.json())
-      .then((data) => {
-        this.$store.state.data = data;
-        this.$store.state.filter = data;
-      });
-  },
-  components: { FilterBar, Card },
+  components: { FilterBar, Card, Loading },
 };
 </script>
 

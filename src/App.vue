@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main :class="{ dark: $store.state.theme }">
     <NavBar />
     <router-view />
   </main>
@@ -21,7 +21,11 @@ export default {
 </script>
 
 <style>
-#app {
+main {
+  min-height: 100vh;
   background-color: var(--VeryLightGrayLightModeBackground);
+}
+main.dark {
+  background-color: var(--VeryDarkBlueDarkModeBackground);
 }
 </style>
